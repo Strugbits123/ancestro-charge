@@ -1698,6 +1698,29 @@ function Step6Supporting({
 }
 
 /* Small Field component with label and bottom-only border */
+// function Field({
+//   label,
+//   value,
+//   onChange,
+//   hint,
+// }: {
+//   label: string;
+//   value: string;
+//   onChange: (v: string) => void;
+//   hint?: string;
+// }) {
+//   return (
+//     <div className="flex flex-col font-lato text-[14px] font-bold">
+//       <label className="text-[12px] text-white mb-1">{label}</label>
+//       {hint && <span className="text-[11px] text-white">{hint}</span>}
+//       <input
+//         value={value}
+//         onChange={(e) => onChange(e.target.value)}
+//         className="bg-transparent outline-none py-1 border-b border-[rgba(255,255,255,0.3)] text-white"
+//       />
+//     </div>
+//   );
+// }
 function Field({
   label,
   value,
@@ -1711,13 +1734,17 @@ function Field({
 }) {
   return (
     <div className="flex flex-col font-lato text-[14px] font-bold">
-      <label className="text-[12px] text-white mb-1">{label}</label>
+      {/* Label and hint in one row */}
+      <div className="flex items-center gap-2 mb-1">
+        <label className="text-[12px] text-white">{label}</label>
+        {hint && <span className="text-[10px] text-white italic">{hint}</span>}
+      </div>
+
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="bg-transparent outline-none py-1 border-b border-[rgba(255,255,255,0.3)] text-white"
       />
-      {hint && <span className="text-[11px] text-white">{hint}</span>}
     </div>
   );
 }
