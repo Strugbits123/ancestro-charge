@@ -1,33 +1,41 @@
+"use client";
+
 import React from "react";
 
 interface ButtonProps {
-  children: React.ReactNode;
+  /** The visible text label on the button */
+  label: string;
+
+  /** Optional onClick handler */
   onClick?: () => void;
+
+  /** Optional additional classes (e.g., margin, width overrides) */
   className?: string;
-  variant?: "yellow" | "white"; 
-style?:any
+
+  /** Optional small size toggle for compact buttons */
+  small?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  children,
+  label,
   onClick,
-  className,
-  variant = "yellow",
-  style 
+  className = "",
+  small = false,
 }) => {
-  const baseClasses =
-    "px-6 py-3 rounded-full font-bold text-sm md:text-[15px] font-helvetica transition-all duration-200 border hover:cursor-pointer";
-
-  const variants = {
-    yellow:
-      "border-[#F8B03B] text-[#F8B03B] bg-transparent  hover:bg-[#F8B03B] hover:text-black hover:shadow-[0_10px_30px_rgba(248,176,59,0.8)]",
-    white:
-      "border-white text-white bg-transparent  hover:bg-white hover:text-black hover:shadow-[0_10px_30px_rgba(255,255,255,0.7)]",
-  };
-
   return (
-    <button onClick={onClick} className={`${baseClasses} ${variants[variant]} ${className}`} style={style}>
-      {children}
+    <button
+      onClick={onClick}
+      className={`relative overflow-hidden group rounded-xl font-helvetica font-bold tracking-[2px] text-white bg-[#FFFFFF1A] hover:cursor-pointer transition-colors duration-300
+        ${small ? "px-5 py-3 text-[14px]" : "px-6 sm:px-8 py-3 sm:py-4 text-[16px]"} 
+        ${className}`}
+    >
+      {/* Background overlay */}
+      <span className="absolute inset-0 bg-[#F5DC7B] left-full group-hover:left-0 transition-all duration-500 ease-out"></span>
+
+      {/* Text */}
+      <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+        {label}
+      </span>
     </button>
   );
 };
