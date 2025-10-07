@@ -440,7 +440,7 @@ export default function Home() {
       <section className="w-full flex justify-center px-6 py-16">
         <div className="w-full max-w-[1400px] border-2 border-[#FFCD28] bg-[#FFCD281A] rounded-2xl flex flex-col md:flex-row p-8 md:px-28 md:p-14 gap-10">
           {/* Left Content */}
-          <div className="flex-1 md:w-[55%] flex flex-col justify-center font-Inter">
+          <div className="flex-1 md:w-[55%] flex flex-col justify-center font-inter">
             {/* Title */}
             <h2 className="text-white text-[32px] sm:text-[40px] font-bold mb-4">
               {t("ancestro_charge_app")}
