@@ -27,6 +27,9 @@
 .font-helvetica {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.font-inter {
+  font-family: var(--font-inter);
+}
 
 body {
   background: var(--background);
