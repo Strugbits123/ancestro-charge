@@ -26,7 +26,11 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       className={`relative overflow-hidden group rounded-xl font-helvetica font-bold tracking-[2px] text-white bg-[#FFFFFF1A] hover:cursor-pointer transition-colors duration-300
-        ${small ? "px-5 py-3 text-[14px]" : "px-6 sm:px-8 py-3 sm:py-4 text-[16px]"} 
+        ${
+          small
+            ? "px-5 py-3 text-[14px]"
+            : "px-6 sm:px-8 py-3 sm:py-4 text-[16px]"
+        } 
         ${className}`}
     >
       {/* Background overlay */}
