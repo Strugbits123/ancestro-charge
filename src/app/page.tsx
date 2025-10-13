@@ -219,9 +219,9 @@ export default function Home() {
           />
         </div>
         {/* Flags Section */}
-        <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 w-full px-4">
+        <div className="flex flex-col items-center gap-4 sm:gap-4 md:gap-8 w-full px-4">
           {/* First Row (11 flags) */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-4 md:gap-8">
             {Array.from({ length: 11 }).map((_, i) => (
               <div
                 key={i}
@@ -238,7 +238,7 @@ export default function Home() {
             ))}
           </div>
           {/* Second Row (7 flags) */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-4 md:gap-8 ">
             {Array.from({ length: 7 }).map((_, i) => (
               <div
                 key={i + 11}
