@@ -1,9 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
+import { sendAdminNotification, sendUserConfirmation } from "../../../../lib/email";
+
+// Define the FormData interface to match emailUtils.ts and StepData
+interface FormData {
+  fullName?: string;
+  email?: string;
+  phone?: string;
+  businessName?: string;
+  propertyAddress?: string;
+  propertyType?: string;
+  chargersAvailable?: string;
+  covered?: "covered" | "uncovered";
+  publicAccess?: "Yes" | "No";
+  averageDailyVisitors?: string;
+  hoursOfOperation?: string;
+  ownOrLease?: string;
+  multipleLocations?: "Yes" | "No";
+  multipleLocationsCount?: string;
+  businessRevenue?: boolean;
+  electricalCapacity?: boolean;
+  utilityBillUploaded?: boolean;
+  utilityBillFiles?: string[];
+  chargerPreference?: string;
+  partnershipModel?: string;
+  additionalOpportunities?: string;
+  propertyPhotoFiles?: string[];
+  electricalPhotoFiles?: string[];
+  notes?: string;
+  projectPortfolioFiles?: string[];
+  submissionDate?: Date;
+  calendly?: any;
+}
 
 const mongoUri = process.env.MONGODB_URI!;
 const client = new MongoClient(mongoUri);
-async function submitToDatabase(uploadRecords: any[]) {
+
+async function submitToDatabase(uploadRecords: FormData[]) {
   if (!mongoUri) {
     throw new Error("Missing MONGODB_URI environment variable");
   }
@@ -14,7 +47,12 @@ async function submitToDatabase(uploadRecords: any[]) {
     const collection = db.collection("ancestrocharge");
 
     if (uploadRecords.length > 0) {
-      await collection.insertMany(uploadRecords);
+      // Ensure submissionDate is stored as an ISO date string
+      const recordsToInsert = uploadRecords.map(record => ({
+        ...record,
+        submissionDate: record.submissionDate ? new Date(record.submissionDate).toISOString() : new Date().toISOString(),
+      }));
+      await collection.insertMany(recordsToInsert);
     }
   } finally {
     await client.close();
@@ -24,68 +62,33 @@ async function submitToDatabase(uploadRecords: any[]) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const uploadRecords = body.uploadRecords;
+    const uploadRecords: FormData[] = body.uploadRecords;
 
-    console.log("FormData: ",body.uploadRecords);
+    console.log("FormData: ", uploadRecords);
 
     if (!uploadRecords || !Array.isArray(uploadRecords) || uploadRecords.length === 0) {
       return NextResponse.json({ error: "No valid records provided" }, { status: 400 });
     }
 
+    // Submit to database
     await submitToDatabase(uploadRecords);
 
-    return NextResponse.json({ message: "Data successfully submitted to database" }, { status: 200 });
+    // Send confirmation emails for each record
+    await Promise.all(
+      uploadRecords.map(async (record) => {
+        if (!record.email) {
+          throw new Error("User email is missing in one of the records");
+        }
+        await Promise.all([
+          sendUserConfirmation(record),
+          sendAdminNotification("tarzan@ancestroenergy.com", record),
+        ]);
+      })
+    );
+
+    return NextResponse.json({ message: "Data successfully submitted and emails sent" }, { status: 200 });
   } catch (err) {
-    console.error("Database submission failed:", err);
-    return NextResponse.json({ error: "Database submission failed" }, { status: 500 });
+    console.error("Error in submission:", err);
+    return NextResponse.json({ error: "Submission or email sending failed" }, { status: 500 });
   }
 }
-
-
-
-// import { NextRequest, NextResponse } from "next/server";
-// import { MongoClient } from "mongodb";
-// import { sendUserConfirmation, sendAdminNotification } from "../../../../lib/email";
-
-// const mongoUri = process.env.MONGODB_URI!;
-// const client = new MongoClient(mongoUri);
-
-// async function submitToDatabase(uploadRecords: any[]) {
-//   await client.connect();
-//   const db = client.db("ancestro");
-//   const collection = db.collection("ancestrocharge");
-
-//   if (uploadRecords.length > 0) {
-//     await collection.insertMany(uploadRecords);
-//   }
-// }
-
-// export async function POST(req: NextRequest) {
-//   try {
-//     const body = await req.json();
-//     const uploadRecords = body.uploadRecords;
-
-//     if (!uploadRecords || !Array.isArray(uploadRecords) || uploadRecords.length === 0) {
-//       return NextResponse.json({ error: "No valid records provided" }, { status: 400 });
-//     }
-
-//     // Save to DB
-//     await submitToDatabase(uploadRecords);
-
-//     // Send emails (to client + admin)
-//     for (const record of uploadRecords) {
-//       await sendUserConfirmation(record);
-//       await sendAdminNotification(process.env.ADMIN_EMAIL!, record);
-//     }
-
-//     return NextResponse.json(
-//       { message: "Data saved & confirmation emails sent successfully" },
-//       { status: 200 }
-//     );
-//   } catch (err) {
-//     console.error("Database submission or email failed:", err);
-//     return NextResponse.json({ error: "Submission failed" }, { status: 500 });
-//   } finally {
-//     await client.close();
-//   }
-// }
