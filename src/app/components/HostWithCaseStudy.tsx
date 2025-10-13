@@ -106,16 +106,7 @@ export default function HostWithCaseStudy() {
                 className="group bg-[#111111] rounded-2xl p-6 flex flex-col items-start border border-transparent transition-all duration-300 hover:border-[#F5DC7B] hover:shadow-[0_0_35px_5px_#F5DC7B33]"
               >
                 {/* Icon */}
-                {/* <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 transition-all duration-300 border group-hover:border-[#F5DC7B] group-hover:bg-[#F5DC7B1A] group-hover:shadow-[0_0_35px_5px_#F5DC7B33]">
-                  <div className="relative w-[40px] h-[40px] sm:w-[60px] sm:h-[60px]">
-                    <Image
-                      src={card.img}
-                      alt={card.title}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div> */}
+         
                           <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 transition-all duration-300  group-hover:bg-[#F5DC7B1A] group-hover:shadow-[0_0_35px_5px_#F5DC7B33]">
                             <div className="relative w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                               <Image
