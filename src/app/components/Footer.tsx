@@ -65,7 +65,7 @@ export default function Footer() {
             >
               {t("footer_dealers")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside sm:list-outside pl-6text-white/90">
+            <ul className="space-y-2 text-[14px] list-disc list-inside sm:list-outside pl-6 text-white/90">
               <li>{t("footer_dealer_application")}</li>
               <li>{t("footer_portal_login")}</li>
             </ul>
