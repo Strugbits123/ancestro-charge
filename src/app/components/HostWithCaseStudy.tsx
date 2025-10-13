@@ -18,26 +18,31 @@ export default function HostWithCaseStudy() {
       img: "/icon1.png",
       title: t("new_revenue_stream_title"),
       desc: t("new_revenue_stream_desc"),
+     hoverImg: "/hower-icon1.png",
     },
     {
       img: "/icon2.png",
       title: t("more_traffic_title"),
       desc: t("more_traffic_desc"),
+        hoverImg: "/hower-icon2.png",
     },
     {
       img: "/icon3.png",
       title: t("zero_investment_title"),
       desc: t("zero_investment_desc"),
+        hoverImg: "/hower-icon3.png",
     },
     {
       img: "/icon4.png",
       title: t("fully_insured_title"),
       desc: t("fully_insured_desc"),
+        hoverImg: "/hower-icon5.png",
     },
     {
       img: "/icon5.png",
       title: t("join_movement_title"),
       desc: t("join_movement_desc"),
+        hoverImg: "/hower-icon4.png",
     },
   ];
 
@@ -89,7 +94,7 @@ export default function HostWithCaseStudy() {
       <div className="relative w-full z-10 inset-0 bg-black/10" style={{ marginTop: "-170px" }}>
         <div className="w-full max-w-[1400px] mx-auto px-6 pt-12 pb-20">
           {/* Why Host Heading */}
-          <h2 className="text-2xl md:text-[40px] font-helevetica font-bold text-white text-center mb-10 tracking-[2px]">
+          <h2 className="text-2xl md:text-[40px] font-helevetica font-bold text-[#FFFFFF66] text-center mb-10 tracking-[2px] ">
             {t("why_host")}
           </h2>
 
@@ -98,10 +103,10 @@ export default function HostWithCaseStudy() {
             {whyHostCards.map((card, i) => (
               <div
                 key={i}
-                className="group bg-[#111111] rounded-2xl p-6 flex flex-col items-start border border-transparent transition-all duration-300 hover:border-[#F5DC7B] hover:shadow-[0_0_20px_#F5DC7B1A]"
+                className="group bg-[#111111] rounded-2xl p-6 flex flex-col items-start border border-transparent transition-all duration-300 hover:border-[#F5DC7B] hover:shadow-[0_0_35px_5px_#F5DC7B33]"
               >
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 transition-all duration-300 border group-hover:border-[#F5DC7B] group-hover:bg-[#F5DC7B1A] group-hover:shadow-[0_0_10px_#F5DC7B1A]">
+                {/* <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 transition-all duration-300 border group-hover:border-[#F5DC7B] group-hover:bg-[#F5DC7B1A] group-hover:shadow-[0_0_35px_5px_#F5DC7B33]">
                   <div className="relative w-[40px] h-[40px] sm:w-[60px] sm:h-[60px]">
                     <Image
                       src={card.img}
@@ -110,7 +115,26 @@ export default function HostWithCaseStudy() {
                       className="object-contain"
                     />
                   </div>
-                </div>
+                </div> */}
+                          <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 transition-all duration-300  group-hover:bg-[#F5DC7B1A] group-hover:shadow-[0_0_35px_5px_#F5DC7B33]">
+                            <div className="relative w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                              <Image
+                                src={card.img}
+                                alt={card.title}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                
+                            <div className="absolute w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <Image
+                                src={card.hoverImg}
+                                alt={`${card.title} hover`}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          </div>
 
                 {/* Title */}
                 <h3 className="text-lg font-semibold text-white mb-2">

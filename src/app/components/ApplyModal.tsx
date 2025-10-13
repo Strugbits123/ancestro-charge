@@ -70,7 +70,7 @@ export default function ApplyModal({
         covered: "covered",
         publicAccess: "No",
         multipleLocations: "No",
-      }); // Reset with default values
+      });   
     }
   }, [open]);
 
@@ -87,7 +87,7 @@ export default function ApplyModal({
       {/* Modal */}
       {open && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center px-4 sm:px-6"
+          className="fixed inset-0 z-[60] bg-black/35 flex items-center justify-center px-4 sm:px-6 "
           aria-modal
           role="dialog"
           onMouseDown={(e) => {
@@ -100,7 +100,7 @@ export default function ApplyModal({
           {/* Modal card */}
           <div
             ref={modalRef}
-            className="relative z-10 max-w-[520px] w-full bg-[#00000080] border border-[rgba(255,255,255,0.1)] backdrop-blur-lg shadow-lg rounded-[20px] p-6 sm:p-8"
+            className="relative  z-10 max-w-[520px] w-full bg-[#00000080] border border-[rgba(255,255,255,0.1)] backdrop-blur-lg shadow-lg rounded-[20px] p-6 sm:p-8"
             style={{ width: "500px", height: "auto" }}
             onMouseDown={(e) => e.stopPropagation()}
           >
@@ -129,10 +129,10 @@ export default function ApplyModal({
             </div>
 
             {/* Body — switch by step */}
-            <div className="overflow-auto" style={{ maxHeight: 520 }}>
+            <div className="overflow-auto " style={{ maxHeight: 520 }}>
               {done ? (
                 <div className="flex flex-col items-center gap-4 font-lato">
-                  <div className="px-4 py-2 rounded-lg bg-[#FFCD28]">
+                  <div className="px-4 py-2 rounded-lg bg-[#FFCD28] ">
                     <h4 className="text-[20px] font-bold text-black text-center">
                       {t("apply_modal_thanks")}
                     </h4>
@@ -379,7 +379,7 @@ function Step2Business({
   };
 
   return (
-    <div className="flex flex-col gap-5 text-white">
+    <div className="flex flex-col gap-5 text-white ">
       {/* Property Type Dropdown */}
       <div className="relative flex flex-col">
         <label className="text-[13px] mb-2">
@@ -439,41 +439,48 @@ function Step2Business({
       {/* When "Other" is selected → show additional fields */}
       <div className="flex flex-col gap-5 mt-3 transition-all duration-300">
         {/* Parking Availability */}
-        <div>
-          <label className="text-[13px] block mb-2">
-            {t("apply_modal_parking_availability")}
-            <span className="text-[10px] italic ml-2">
-              {t("apply_modal_required_field")}
-            </span>
-          </label>
-          <select
-            value={data.chargersAvailable || ""}
-            onChange={(e) => update({ chargersAvailable: e.target.value })}
-            className={`bg-transparent p-2 border-b w-full text-white ${
-              errors.chargersAvailable
-                ? "border-red-500"
-                : "border-[rgba(255,255,255,0.3)]"
-            }`}
-          >
-            <option value="" className="text-black">
-              {t("apply_modal_select_property_type")}
-            </option>
-            {[...Array(21).keys()].map((n) => (
-              <option
-                key={n}
-                value={n === 20 ? "20+" : n}
-                className="text-black"
-              >
-                {n === 20 ? "20+" : n}
-              </option>
-            ))}
-          </select>
-          {errors.chargersAvailable && (
-            <span className="text-[10px] text-red-500 mt-1">
-              {errors.chargersAvailable}
-            </span>
-          )}
-        </div>
+     
+<div>
+  <label className="text-[13px] block mb-2">
+    {t("apply_modal_parking_availability")}
+    <span className="text-[10px] italic ml-2">
+      {t("apply_modal_required_field")}
+    </span>
+  </label>
+
+  <select
+    value={data.chargersAvailable || ""}
+    onFocus={(e) => (e.target.size = 5)} 
+    onBlur={(e) => (e.target.size = 0)} 
+    onChange={(e) => {
+      update({ chargersAvailable: e.target.value });
+      e.target.size = 0;
+      e.target.blur();  
+    }}
+    className={`bg-transparent p-2 border-b w-full text-white overflow-y-auto ${
+      errors.chargersAvailable
+        ? "border-red-500"
+        : "border-[rgba(255,255,255,0.3)]"
+    }`}
+    style={{ maxHeight: "25vh" }}
+  >
+    <option value="" className="text-white">
+      {t("apply_modal_select_property_type")}
+    </option>
+    {[...Array(21).keys()].map((n) => (
+      <option key={n} value={n === 20 ? "20+" : n} className="text-white">
+        {n === 20 ? "20+" : n}
+      </option>
+    ))}
+  </select>
+
+  {errors.chargersAvailable && (
+    <span className="text-[10px] text-red-500 mt-1">
+      {errors.chargersAvailable}
+    </span>
+  )}
+</div>
+
 
         {/* Covered / Uncovered */}
         <div>
@@ -1577,7 +1584,7 @@ function Field({
       {/* Label and hint in one row */}
       <div className="flex items-center gap-2 mb-1">
         <label className="text-[12px] text-white">{label}</label>
-        {hint && <span className="text-[10px] text-white italic">{hint}</span>}
+        {hint && <span className="text-[11.2px] text-white italic">{hint}</span>}
       </div>
 
       <input
@@ -1587,7 +1594,7 @@ function Field({
           error ? "border-red-500" : "border-[rgba(255,255,255,0.3)]"
         } text-white`}
       />
-      {error && <span className="text-[10px] text-red-500 mt-1">{error}</span>}
+      {error && <span className="text-[12px] text-red-500 mt-1">{error}</span>}
     </div>
   );
 }

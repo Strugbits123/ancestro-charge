@@ -45,7 +45,7 @@ export default function Footer() {
             >
               {t("footer_hosts")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] list-disc list-inside sm:list-outside pl-6 text-white/90">
               <li>{t("footer_apply_to_host")}</li>
               <li>{t("footer_how_it_works")}</li>
               <li>{t("footer_app_features")}</li>
@@ -65,7 +65,7 @@ export default function Footer() {
             >
               {t("footer_dealers")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] list-disc list-inside sm:list-outside pl-6text-white/90">
               <li>{t("footer_dealer_application")}</li>
               <li>{t("footer_portal_login")}</li>
             </ul>
@@ -84,7 +84,7 @@ export default function Footer() {
             >
               {t("footer_customers")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] list-disc list-inside sm:list-outside pl-6 text-white/90">
               <li>{t("footer_download_app")}</li>
               <li>{t("footer_find_a_charger")}</li>
               <li>{t("footer_support")}</li>
@@ -104,7 +104,7 @@ export default function Footer() {
             >
               {t("footer_investors")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] list-disc list-inside sm:list-outside pl-6 text-white/90">
               <li>{t("footer_investor_relations")}</li>
               <li>{t("footer_ancestro_capital")}</li>
               <li>{t("footer_sustainability")}</li>
@@ -124,7 +124,7 @@ export default function Footer() {
             >
               {t("footer_company")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90 mb-4">
+            <ul className="space-y-2 text-[14px] list-disc list-inside sm:list-outside pl-6 text-white/90 mb-4">
               <li>{t("footer_about")}</li>
               <li>{t("footer_careers")}</li>
               <li>{t("footer_contact")}</li>
