@@ -306,7 +306,7 @@ export default function Home() {
 <section className="relative w-full flex items-center justify-center my-10 sm:my-16 lg:my-20 px-4 sm:px-6 lg:px-8">
   {/* Background Image */}
   <div
-    className="absolute inset-0 bg-cover bg-center rounded-2xl max-w-[90%] sm:max-w-6xl lg:max-w-7xl mx-auto w-full h-[300px] sm:h-[380px] md:h-[420px] lg:h-[438px]"
+    className="absolute inset-0 bg-cover bg-center rounded-2xl max-w-[85%] md:max-w-3xl lg:max-w-7xl mx-auto w-full h-[300px] sm:h-[380px] md:h-[420px] lg:h-[438px]"
     style={{ backgroundImage: "url('/host-bg.jpg')" }}
   />
 
