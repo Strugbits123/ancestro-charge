@@ -212,7 +212,7 @@ export default function Home() {
             <Button
               label={t("apply_to_host")}
               small
-              className="mt-8 w-full md:w-[60%]"
+              className="mt-8 w-full max-w-[350px]"
               onClick={handleOpenModal}
             />
           </div>
