@@ -1,4 +1,3 @@
-
 "use client";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
@@ -106,7 +105,18 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-[14px] text-white/90 list-disc list-outside pl-6 w-full">
               <li>{t("footer_investor_relations")}</li>
-              <li>{t("footer_ancestro_capital")}</li>
+              {/* <li >{t("footer_ancestro_capital")}</li> */}
+              <li>
+                <a
+                  href="https://www.ancestrocapital.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  {t("footer_ancestro_capital")}
+                </a>
+              </li>
+
               <li>{t("footer_sustainability")}</li>
             </ul>
           </div>
