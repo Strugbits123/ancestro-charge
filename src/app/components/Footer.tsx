@@ -31,9 +31,9 @@ export default function Footer() {
         </div>
 
         {/* Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-20 text-center sm:text-left mb-12 w-full max-w-[1400px] text-[14px] font-bold mb-3 tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-20 w-full max-w-[1400px] text-[14px] font-bold mb-12 justify-items-center sm:justify-items-start ">
           {/* Hosts */}
-          <div>
+          <div className="flex flex-col sm:items-start w-full max-w-[200px] ">
             <h3
               className="text-[14px] font-bold mb-3 tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]"
               style={{
@@ -45,7 +45,7 @@ export default function Footer() {
             >
               {t("footer_hosts")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] text-white/90 list-disc list-outside pl-6 w-full">
               <li>{t("footer_apply_to_host")}</li>
               <li>{t("footer_how_it_works")}</li>
               <li>{t("footer_app_features")}</li>
@@ -53,9 +53,9 @@ export default function Footer() {
           </div>
 
           {/* Dealers */}
-          <div>
+          <div className="flex flex-col items-start w-full max-w-[200px]">
             <h3
-              className="text-[16px] font-bold mb-3"
+              className="text-[14px] font-bold mb-3 tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]"
               style={{
                 background:
                   "linear-gradient(90deg, #C4952D, #AE7F2A, #F5DC7B, #AE7F2A)",
@@ -65,16 +65,16 @@ export default function Footer() {
             >
               {t("footer_dealers")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] text-white/90 list-disc list-outside pl-6 w-full">
               <li>{t("footer_dealer_application")}</li>
               <li>{t("footer_portal_login")}</li>
             </ul>
           </div>
 
           {/* Customers */}
-          <div>
+          <div className="flex flex-col items-start w-full max-w-[200px]">
             <h3
-              className="text-[16px] font-bold mb-3"
+              className="text-[14px] font-bold mb-3 tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]"
               style={{
                 background:
                   "linear-gradient(90deg, #C4952D, #AE7F2A, #F5DC7B, #AE7F2A)",
@@ -84,7 +84,7 @@ export default function Footer() {
             >
               {t("footer_customers")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] text-white/90 list-disc list-outside pl-6 w-full">
               <li>{t("footer_download_app")}</li>
               <li>{t("footer_find_a_charger")}</li>
               <li>{t("footer_support")}</li>
@@ -92,9 +92,9 @@ export default function Footer() {
           </div>
 
           {/* Investors */}
-          <div>
+          <div className="flex flex-col items-start w-full max-w-[200px]">
             <h3
-              className="text-[16px] font-bold mb-3"
+              className="text-[14px] font-bold mb-3 tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]"
               style={{
                 background:
                   "linear-gradient(90deg, #C4952D, #AE7F2A, #F5DC7B, #AE7F2A)",
@@ -104,7 +104,7 @@ export default function Footer() {
             >
               {t("footer_investors")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90">
+            <ul className="space-y-2 text-[14px] text-white/90 list-disc list-outside pl-6 w-full">
               <li>{t("footer_investor_relations")}</li>
               <li>{t("footer_ancestro_capital")}</li>
               <li>{t("footer_sustainability")}</li>
@@ -112,9 +112,9 @@ export default function Footer() {
           </div>
 
           {/* Company + Social Icons */}
-          <div className="flex flex-col items-center sm:items-start">
+          <div className="flex flex-col items-start w-full max-w-[200px]">
             <h3
-              className="text-[16px] font-bold mb-3"
+              className="text-[14px] font-bold mb-3 tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]"
               style={{
                 background:
                   "linear-gradient(90deg, #C4952D, #AE7F2A, #F5DC7B, #AE7F2A)",
@@ -124,16 +124,15 @@ export default function Footer() {
             >
               {t("footer_company")}
             </h3>
-            <ul className="space-y-2 text-[14px] list-disc list-inside text-white/90 mb-4">
+            <ul className="space-y-2 text-[14px] text-white/90 list-disc list-outside pl-6 w-full mb-4">
               <li>{t("footer_about")}</li>
               <li>{t("footer_careers")}</li>
               <li>{t("footer_contact")}</li>
               <li>{t("footer_privacy_policy")}</li>
               <li>{t("footer_terms_of_service")}</li>
             </ul>
-
             {/* Social Icons under Company */}
-            <div className="flex gap-4 mt-2 justify-center sm:justify-start">
+            <div className="flex gap-4 mt-2 justify-start pl-1 sm:pl-6">
               <Image
                 src="/icon-yt.png"
                 alt="YouTube"

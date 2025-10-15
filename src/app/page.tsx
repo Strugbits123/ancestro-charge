@@ -5,10 +5,15 @@ import HeroSection from "./components/HostWithCaseStudy";
 import Footer from "./components/Footer";
 import Button from "./components/Button";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import ApplyModal from "./components/ApplyModal";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "es" : "en";
     i18n.changeLanguage(newLang);
@@ -45,74 +50,86 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col w-full bg-[#000000]">
       {/* Language Toggle Button */}
-      <div className="fixed top-4 right-4 z-50">
-        <Button label={t("language_toggle")} onClick={toggleLanguage} small />
+      <div className="fixed top-0 sm:top-4  right-1 sm:right-4 z-50">
+        <Button label={t("language_toggle")} onClick={toggleLanguage} small  className="backdrop-blur-xl tracking-[1px] sm:tracking-[2px] py-2 sm:py-3  "/>
       </div>
 
       <HeroSection />
 
       {/* ===== How Hosting Works Section ===== */}
-      <div className="relative w-full bg-black">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20">
-          {/* Heading */}
-          <h2 className="text-xl sm:text-2xl md:text-[36px] lg:text-[40px] font-helevetica font-bold text-white text-center mb-10 tracking-[1.5px]">
-            {t("how_hosting_works")}
-          </h2>
 
-          {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {[
-              {
-                img: "/how1.png",
-                title: t("apply_online_title"),
-                desc: t("apply_online_desc"),
-              },
-              {
-                img: "/how2.png",
-                title: t("site_review_title"),
-                desc: t("site_review_desc"),
-              },
-              {
-                img: "/how3.png",
-                title: t("free_installation_title"),
-                desc: t("free_installation_desc"),
-              },
-              {
-                img: "/how4.png",
-                title: t("start_earning_title"),
-                desc: t("start_earning_desc"),
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                className="group bg-[#111111] rounded-2xl p-4 sm:p-6 flex flex-col items-start h-full border border-transparent transition-all duration-300 hover:border-[#F5DC7B] hover:shadow-[0_0_20px_#F5DC7B1A]"
-              >
-                {/* Icon */}
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 transition-all duration-300 border group-hover:border-[#F5DC7B] group-hover:bg-[#F5DC7B1A] group-hover:shadow-[0_0_10px_#F5DC7B1A]">
-                  <div className="relative w-[40px] h-[40px] sm:w-[60px] sm:h-[60px]">
-                    <Image
-                      src={card.img}
-                      alt={card.title}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
 
-                {/* Title */}
-                <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-                  {card.title}
-                </h3>
+<div className="relative w-full bg-black">
+  <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20">
+    {/* Heading */}
+    <h2 className="text-xl sm:text-2xl md:text-[36px] lg:text-[40px] font-helvetica font-bold text-[#FFFFFF66] text-center mb-10 tracking-[1.5px]">
+      {t("how_hosting_works")}
+    </h2>
 
-                {/* Description */}
-                <p className="text-xs sm:text-sm md:text-base text-gray-400">
-                  {card.desc}
-                </p>
-              </div>
-            ))}
+    {/* Cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      {[
+        {
+          img: "/how1.png",
+          hoverImg: "/how1-hover.png",
+          title: t("apply_online_title"),
+          desc: t("apply_online_desc"),
+        },
+        {
+          img: "/how2.png",
+          hoverImg: "/how2-hover.png",
+          title: t("site_review_title"),
+          desc: t("site_review_desc"),
+        },
+        {
+          img: "/how3.png",
+          hoverImg: "/how3-hover.png",
+          title: t("free_installation_title"),
+          desc: t("free_installation_desc"),
+        },
+        {
+          img: "/how4.png",
+          hoverImg: "/how4-hover.png",
+          title: t("start_earning_title"),
+          desc: t("start_earning_desc"),
+        },
+      ].map((card, i) => (
+        <div
+          key={i}
+          className="group bg-[#111111] rounded-2xl p-4 sm:p-6 flex flex-col items-start h-full border border-transparent transition-all duration-300 hover:border-[#F5DC7B] hover:shadow-[0_0_35px_5px_#F5DC7B33]"
+        >
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 transition-all duration-300  group-hover:bg-[#F5DC7B1A] group-hover:shadow-[0_0_35px_5px_#F5DC7B33]">
+            <div className="relative w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+              <Image
+                src={card.img}
+                alt={card.title}
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            <div className="absolute w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Image
+                src={card.hoverImg}
+                alt={`${card.title} hover`}
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
+
+          <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
+            {card.title}
+          </h3>
+
+          <p className="text-xs sm:text-sm md:text-base text-gray-400">
+            {card.desc}
+          </p>
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>
 
       <section className="w-full flex justify-center px-6 py-16">
         <div className="w-full max-w-[1400px] border-2 border-[#FFCD28] bg-[#FFCD281A] rounded-2xl flex flex-col md:flex-row p-8 md:px-28 md:p-14 gap-10">
@@ -161,7 +178,7 @@ export default function Home() {
             </div>
 
             {/* CTA Button */}
-            <Button label={t("apply_to_host")} small className="mt-8 w-full md:w-1/2" />
+            <Button label={t("apply_to_host")} small className="mt-8 w-full md:w-[60%]"  onClick={handleOpenModal}/>
           </div>
 
           {/* Right Image */}
@@ -202,9 +219,9 @@ export default function Home() {
           />
         </div>
         {/* Flags Section */}
-        <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 w-full px-4">
+        <div className="flex flex-col items-center gap-4 sm:gap-4 md:gap-8 w-full px-4">
           {/* First Row (11 flags) */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-3">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-4 md:gap-8">
             {Array.from({ length: 11 }).map((_, i) => (
               <div
                 key={i}
@@ -221,7 +238,7 @@ export default function Home() {
             ))}
           </div>
           {/* Second Row (7 flags) */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-3">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-4 md:gap-8 ">
             {Array.from({ length: 7 }).map((_, i) => (
               <div
                 key={i + 11}
@@ -262,17 +279,17 @@ export default function Home() {
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-bold text-2xl md:text-[30px] transition-colors duration-300 group-hover:text-[#F5DC7B] tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]">
+              <h3 className="text-lg font-bold text-2xl md:text-[30px] lg:text-[28px] transition-colors duration-300 group-hover:text-[#F5DC7B] tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]">
                 {item.title}
               </h3>
 
               {/* Subtitle */}
-              <p className="text-sm md:text-[18px] mt-1 text-light transition-colors duration-300 group-hover:text-[#F5DC7B] tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]">
+              <p className="text-sm md:text-[18px] mt-[-5px] text-light   transition-colors duration-300 group-hover:text-[#F5DC7B] tracking-[1px] sm:tracking-[1.5px] md:tracking-[2px]">
                 {item.subtitle}
               </p>
 
               {/* Custom Arrow */}
-              <div className="mt-3 w-[17.6px] h-[26.9px] relative transition-colors duration-300 group-hover:[filter:brightness(0)_saturate(100%)_invert(82%)_sepia(42%)_saturate(347%)_hue-rotate(14deg)_brightness(97%)_contrast(88%)]">
+              <div className="mt-3 w-[24.6px] h-[26.9px] relative transition-colors duration-300 group-hover:[filter:brightness(0)_saturate(100%)_invert(82%)_sepia(42%)_saturate(347%)_hue-rotate(14deg)_brightness(97%)_contrast(88%)]">
                 <Image
                   src="/rightarrow.png"
                   alt="Arrow"
@@ -286,30 +303,32 @@ export default function Home() {
       </section>
 
       {/* ReadyToHost */}
-      <section className="relative w-full flex items-center justify-center my-20 py-20 px-6">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center rounded-2xl max-w-7xl mx-auto w-full"
-          style={{ backgroundImage: "url('/host-bg.jpg')" }}
-        />
+<section className="relative w-full flex items-center justify-center my-10 sm:my-16 lg:my-20 px-4 sm:px-6 lg:px-8">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center rounded-2xl max-w-[85%] md:max-w-3xl lg:max-w-7xl mx-auto w-full h-[300px] sm:h-[380px] md:h-[420px] lg:h-[438px]"
+    style={{ backgroundImage: "url('/host-bg.jpg')" }}
+  />
 
-        {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-black/40 rounded-2xl max-w-7xl mx-auto w-full" />
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50 rounded-2xl max-w-[90%] sm:max-w-6xl lg:max-w-7xl mx-auto w-full h-[300px] sm:h-[380px] md:h-[420px] lg:h-[438px]" />
 
-        {/* Content */}
-        <div className="relative flex flex-col items-center text-center text-white z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-helvetica font-bold leading-tight tracking-[1px] mb-8 text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px]">
-            {t("ready_to_host").split("<br />")[0]}
-            <br />
-            {t("ready_to_host").split("<br />")[1]}
-          </h2>
+  {/* Content */}
+  <div className="relative flex flex-col items-center justify-center text-center text-white z-10 w-full max-w-[90%] sm:max-w-6xl lg:max-w-7xl h-[300px] sm:h-[380px] md:h-[420px] lg:h-[438px] px-4">
+    <h2 className="font-helvetica font-bold leading-tight tracking-[1px] mb-6 sm:mb-8 text-[22px] sm:text-[30px] md:text-[42px] lg:text-[56px]">
+      {t("ready_to_host").split("<br />")[0]}
+      <br className="hidden sm:block" />
+      {t("ready_to_host").split("<br />")[1]}
+    </h2>
 
-          {/* Button */}
-          <Button label={t("apply_now")} />
-        </div>
-      </section>
+    {/* Button */}
+    <Button label={t("apply_now")} onClick={handleOpenModal} />
+  </div>
+</section>
+
 
       <Footer />
+        <ApplyModal open={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

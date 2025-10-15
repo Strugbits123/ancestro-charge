@@ -59,7 +59,7 @@ i18n
           // Ready to Host Section
           ready_to_host: "Ready to Host an EV Charger?",
           apply_now: "APPLY NOW",
-          apply_to_host: "APPLY TO HOST A CHARGE",
+          apply_to_host: "APPLY TO HOST A CHARGER",
 
           // Language Toggle
           language_toggle: "Switch to Spanish",
