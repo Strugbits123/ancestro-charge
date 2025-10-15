@@ -50,8 +50,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col w-full bg-[#000000]">
       {/* Language Toggle Button */}
-      <div className="fixed top-4 right-4 z-50">
-        <Button label={t("language_toggle")} onClick={toggleLanguage} small  className="backdrop-blur-xl"/>
+      <div className="fixed top-0 sm:top-4  right-1 sm:right-4 z-50">
+        <Button label={t("language_toggle")} onClick={toggleLanguage} small  className="backdrop-blur-xl tracking-[1px] sm:tracking-[2px] py-2 sm:py-3  "/>
       </div>
 
       <HeroSection />

@@ -35,7 +35,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialLanguage = "en"; // Default language (could be dynamic, e.g., from user cookies or server logic)
+  const initialLanguage = "en"; 
 
   return (
     <html lang={initialLanguage}>
