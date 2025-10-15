@@ -178,7 +178,7 @@ export default function Home() {
             </div>
 
             {/* CTA Button */}
-            <Button label={t("apply_to_host")} small className="mt-8 w-full md:w-1/2"  onClick={handleOpenModal}/>
+            <Button label={t("apply_to_host")} small className="mt-8 w-full md:w-[60%]"  onClick={handleOpenModal}/>
           </div>
 
           {/* Right Image */}
