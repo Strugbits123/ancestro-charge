@@ -26,8 +26,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ancestro Solar - Clean Energy Solutions",
-  description: "Powering the future with clean, sustainable solar energy solutions for your home and business.",
+  title: "Ancestro Charge - Clean Energy Solutions",
+  description: "Ancestro Charge provides ultra-fast, reliable EV charging solutions powered by clean energy — making electric mobility simple, smart, and sustainable.",
 };
 
 export default function RootLayout({

@@ -69,9 +69,9 @@ export default function HostWithCaseStudy() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col items-center text-center px-2">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col gap-2 md:gap-4 lg:gap-0 items-center text-center px-2">
           {/* Heading */}
-          <h1 className="text-3xl md:text-5xl lg:text-[80px] font-helevetica font-bold text-white leading mb-6 w-full">
+          <h1 className="text-[22px] md:text-5xl lg:text-[60px] xl:text-[80px] font-helevetica font-bold text-white leading mb-4 sm:mb-6 w-full">
         {t("host_charger_title").split("<br />").map((line, index) => (
               <span key={index}>
                 {line}
@@ -81,7 +81,7 @@ export default function HostWithCaseStudy() {
           </h1>
 
           {/* Description */}
-          <p className="text-base md:text-[30px] font-helevetica text-gray-200 max-w-7xl mb-8">
+          <p className="text-base md:text-[26px] lg:text-[30px] font-helevetica text-gray-200 max-w-7xl mb-4 sm:mb-8">
             {t("host_charger_desc")}
           </p>
 

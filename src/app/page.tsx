@@ -219,9 +219,9 @@ export default function Home() {
           />
         </div>
         {/* Flags Section */}
-        <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 w-full px-4">
+        <div className="flex flex-col items-center gap-4 sm:gap-4 md:gap-8 w-full px-4">
           {/* First Row (11 flags) */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-4 md:gap-8">
             {Array.from({ length: 11 }).map((_, i) => (
               <div
                 key={i}
@@ -238,7 +238,7 @@ export default function Home() {
             ))}
           </div>
           {/* Second Row (7 flags) */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-4 md:gap-8 ">
             {Array.from({ length: 7 }).map((_, i) => (
               <div
                 key={i + 11}
@@ -306,7 +306,7 @@ export default function Home() {
 <section className="relative w-full flex items-center justify-center my-10 sm:my-16 lg:my-20 px-4 sm:px-6 lg:px-8">
   {/* Background Image */}
   <div
-    className="absolute inset-0 bg-cover bg-center rounded-2xl max-w-[90%] sm:max-w-6xl lg:max-w-7xl mx-auto w-full h-[300px] sm:h-[380px] md:h-[420px] lg:h-[438px]"
+    className="absolute inset-0 bg-cover bg-center rounded-2xl max-w-[85%] md:max-w-3xl lg:max-w-7xl mx-auto w-full h-[300px] sm:h-[380px] md:h-[420px] lg:h-[438px]"
     style={{ backgroundImage: "url('/host-bg.jpg')" }}
   />
 
