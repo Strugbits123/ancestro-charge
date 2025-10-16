@@ -23,7 +23,7 @@ async function uploadFilesToS3(files: File[]) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const key = `Uploads/${Date.now()}-${file.name}`;
+    const key = `charge/${Date.now()}-${file.name}`;
 
     await s3.send(
       new PutObjectCommand({

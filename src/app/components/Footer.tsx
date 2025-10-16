@@ -142,29 +142,55 @@ export default function Footer() {
               <li>{t("footer_terms_of_service")}</li>
             </ul>
             {/* Social Icons under Company */}
-            <div className="flex gap-4 mt-2 justify-start pl-1 sm:pl-6">
-              <Image
-                src="/icon-yt.png"
-                alt="YouTube"
-                width={37}
-                height={37}
-                className="object-contain cursor-pointer hover:scale-110 transition-transform"
-              />
-              <Image
-                src="/icon-instagram.png"
-                alt="Instagram"
-                width={37}
-                height={37}
-                className="object-contain cursor-pointer hover:scale-110 transition-transform"
-              />
-              <Image
-                src="/icon-linkedin.png"
-                alt="LinkedIn"
-                width={37}
-                height={37}
-                className="object-contain cursor-pointer hover:scale-110 transition-transform"
-              />
-            </div>
+          <div className="flex gap-4 mt-2 justify-start pl-1 sm:pl-6">
+  {/* YouTube */}
+  <a
+    href="https://www.youtube.com/@GrupoAncestro"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:scale-110 transition-transform"
+  >
+    <Image
+      src="/icon-yt.png"
+      alt="YouTube"
+      width={37}
+      height={37}
+      className="object-contain cursor-pointer"
+    />
+  </a>
+
+  {/* Instagram */}
+  <a
+    href="https://www.instagram.com/ancestrocharge/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:scale-110 transition-transform"
+  >
+    <Image
+      src="/icon-instagram.png"
+      alt="Instagram"
+      width={37}
+      height={37}
+      className="object-contain cursor-pointer"
+    />
+  </a>
+
+  {/* LinkedIn */}
+  <a
+    href="https://www.linkedin.com/company/ancestro-charge/?viewAsMember=true"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:scale-110 transition-transform"
+  >
+    <Image
+      src="/icon-linkedin.png"
+      alt="LinkedIn"
+      width={37}
+      height={37}
+      className="object-contain cursor-pointer"
+    />
+  </a>
+</div>
           </div>
         </div>
       </div>
