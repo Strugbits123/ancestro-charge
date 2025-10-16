@@ -134,6 +134,7 @@ i18n
           apply_modal_property_address_hint: "(WITH GOOGLE MAPS PIN OPTION)",
           apply_modal_property_type: "Property Type",
           apply_modal_select_property_type: "Select Property Type",
+          apply_modal_select_parkingavailability: "Select Availability",
           apply_modal_select_hours: "Select Hours",
           apply_modal_property_type_gas_station: "Gas Station",
           apply_modal_property_type_restaurant: "Restaurant / Café",
@@ -158,7 +159,8 @@ i18n
           apply_modal_no: "No",
           apply_modal_average_daily_visitors:
             "Average Daily Visitors / Customers",
-          apply_modal_hours_of_operation: "Hours of Operation",
+            apply_modal_uploading: "Uploading...",
+          apply_modal_hours_of_operation: "House of Operations",
           apply_modal_own_or_lease: "Do you Own or Lease this Property?",
           apply_modal_own: "Own",
           apply_modal_lease: "Lease",
@@ -327,6 +329,7 @@ i18n
           apply_modal_step_6: "MATERIALES DE APOYO",
           apply_modal_step_7: "GRACIAS",
           apply_modal_thanks: "¡GRACIAS POR SOLICITAR!",
+          apply_modal_uploading: "Subiendo...",
           apply_modal_thanks_desc:
             "NUESTRO EQUIPO REVISARÁ TU PROPIEDAD DENTRO DE LAS 48 HORAS. SI TU SITIO ES PREAPROBADO, RECIBIRÁS UN ENLACE PARA PROGRAMAR UNA LLAMADA.",
           apply_modal_submit: "ENVIAR AHORA",
@@ -341,6 +344,7 @@ i18n
             "(CON OPCIÓN DE PIN DE GOOGLE MAPS)",
           apply_modal_property_type: "Tipo de Propiedad",
           apply_modal_select_property_type: "Seleccionar Tipo de Propiedad",
+          apply_modal_select_parkingavailability: "Seleccionar Disponibilidad",
           apply_modal_select_hours: "Seleccionar Horas",
           apply_modal_property_type_gas_station: "Estación de Servicio",
           apply_modal_property_type_restaurant: "Restaurante / Cafetería",
@@ -366,7 +370,7 @@ i18n
           apply_modal_no: "No",
           apply_modal_average_daily_visitors:
             "Visitantes / Clientes Diarios Promedio",
-          apply_modal_hours_of_operation: "Horario de Operación",
+          apply_modal_hours_of_operation: "Casa de Operaciones",
           apply_modal_own_or_lease:
             "¿Eres Propietario o Arrendatario de esta Propiedad?",
           apply_modal_own: "Propietario",

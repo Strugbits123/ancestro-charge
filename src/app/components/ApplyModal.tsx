@@ -18,7 +18,7 @@ type StepData = {
   covered?: "covered" | "uncovered";
   publicAccess?: "Yes" | "No";
   averageDailyVisitors?: string;
-  hoursOfOperation?: string;
+  // hoursOfOperation?: string;
   ownOrLease?: string;
   multipleLocations?: "Yes" | "No";
   multipleLocationsCount?: string;
@@ -465,7 +465,7 @@ function Step2Business({
     style={{ maxHeight: "25vh" }}
   >
     <option value="" className="text-white">
-      {t("apply_modal_select_property_type")}
+      {t("apply_modal_select_parkingavailability")}
     </option>
     {[...Array(21).keys()].map((n) => (
       <option key={n} value={n === 20 ? "20+" : n} className="text-white">
@@ -578,12 +578,7 @@ function Step2Business({
 
         {/* Hours of Operation */}
         <div className="relative flex flex-col">
-          <label className="text-[13px] mb-2">
-            {t("apply_modal_hours_of_operation")}
-            <span className="text-[10px] italic ml-2">
-              {t("apply_modal_required_field")}
-            </span>
-          </label>
+      
           <div
             className={`flex items-center justify-between bg-transparent border-b p-2 cursor-pointer ${
               errors.ownOrLease || errors.multipleLocations
@@ -592,9 +587,12 @@ function Step2Business({
             }`}
             onClick={() => setIsHoursDropdownOpen(!isHoursDropdownOpen)}
           >
-            <span>
-              {data.hoursOfOperation || t("apply_modal_select_hours")}
+     <label className="text-[13px] mb-2">
+            {t("apply_modal_hours_of_operation")}
+            <span className="text-[10px] italic ml-2">
+              {t("apply_modal_required_field")}
             </span>
+          </label>
             <Image src="/cap-icon.svg" alt="cap" width={24} height={24} />
           </div>
 
@@ -1480,7 +1478,7 @@ function Step6Supporting({
       </div>
 
       {/* 3️⃣ Additional Notes */}
-      <div>
+      <div className="px-1">
         <p className="text-[14px] mb-2">
           {t("apply_modal_additional_notes")}
           <span className="text-[10px] italic ml-2">
@@ -1493,7 +1491,7 @@ function Step6Supporting({
         <textarea
           value={data.notes || ""}
           onChange={(e) => update({ notes: e.target.value })}
-          className={`w-full bg-transparent border-b text-white p-2 text-sm placeholder:text-gray-400 ${
+          className={`w-full bg-transparent border text-white p-2 text-sm placeholder:text-gray-400 ${
             errors.notes ? "border-red-500" : "border-[rgba(255,255,255,0.3)]"
           }`}
           placeholder={t("apply_modal_additional_notes_placeholder")}

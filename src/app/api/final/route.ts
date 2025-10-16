@@ -14,7 +14,7 @@ interface FormData {
   covered?: "covered" | "uncovered";
   publicAccess?: "Yes" | "No";
   averageDailyVisitors?: string;
-  hoursOfOperation?: string;
+  // hoursOfOperation?: string;
   ownOrLease?: string;
   multipleLocations?: "Yes" | "No";
   multipleLocationsCount?: string;

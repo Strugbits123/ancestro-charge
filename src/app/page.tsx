@@ -6,6 +6,7 @@ import Button from "./components/Button";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import ApplyModal from "./components/ApplyModal";
+import ApplyModalFinal from "./components/ApplyModalFinal";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -358,7 +359,8 @@ export default function Home() {
       </section>
 
       <Footer />
-      <ApplyModal open={isModalOpen} onClose={handleCloseModal} />
+      {/* <ApplyModal open={isModalOpen} onClose={handleCloseModal} /> */}
+      <ApplyModalFinal open={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

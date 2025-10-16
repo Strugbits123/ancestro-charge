@@ -5,6 +5,7 @@ import Button from "./Button";
 import { useState } from "react";
 import ApplyModal from "./ApplyModal";
 import { useTranslation } from "react-i18next";
+import ApplyModalFinal from "./ApplyModalFinal";
 
 export default function HostWithCaseStudy() {
   const { t } = useTranslation();
@@ -139,7 +140,8 @@ export default function HostWithCaseStudy() {
           </div>
         </div>
       </div>
-      <ApplyModal open={isModalOpen} onClose={handleCloseModal} />
+      {/* <ApplyModal open={isModalOpen} onClose={handleCloseModal} /> */}
+      <ApplyModalFinal open={isModalOpen} onClose={handleCloseModal} />
     </section>
   );
 }

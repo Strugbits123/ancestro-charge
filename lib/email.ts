@@ -14,7 +14,7 @@ interface FormData {
   covered?: "covered" | "uncovered";
   publicAccess?: "Yes" | "No";
   averageDailyVisitors?: string;
-  hoursOfOperation?: string;
+  // hoursOfOperation?: string;
   ownOrLease?: string;
   multipleLocations?: "Yes" | "No";
   multipleLocationsCount?: string;
@@ -45,7 +45,7 @@ interface TemplateData {
   covered: string;
   publicAccess: string;
   averageDailyVisitors: string;
-  hoursOfOperation: string;
+  // hoursOfOperation: string;
   ownOrLease: string;
   multipleLocations: string;
   multipleLocationsCount: string;
@@ -97,7 +97,7 @@ export async function sendUserConfirmation(formData: FormData) {
     covered: formData.covered || "N/A",
     publicAccess: formData.publicAccess || "No",
     averageDailyVisitors: formData.averageDailyVisitors || "N/A",
-    hoursOfOperation: formData.hoursOfOperation || "N/A",
+    // hoursOfOperation: formData.hoursOfOperation || "N/A",
     ownOrLease: formData.ownOrLease || "N/A",
     multipleLocations: formData.multipleLocations || "No",
     multipleLocationsCount: formData.multipleLocationsCount || "N/A",
@@ -160,7 +160,7 @@ export async function sendAdminNotification(adminEmail: string, formData: FormDa
     covered: formData.covered || "N/A",
     publicAccess: formData.publicAccess || "No",
     averageDailyVisitors: formData.averageDailyVisitors || "N/A",
-    hoursOfOperation: formData.hoursOfOperation || "N/A",
+    // hoursOfOperation: formData.hoursOfOperation || "N/A",
     ownOrLease: formData.ownOrLease || "N/A",
     multipleLocations: formData.multipleLocations || "No",
     multipleLocationsCount: formData.multipleLocationsCount || "N/A",
