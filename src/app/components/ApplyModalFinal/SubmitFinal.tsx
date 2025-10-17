@@ -1,3 +1,4 @@
+
 import { StepData } from "../types/StepData";
 
 export async function submitFinal(
@@ -9,26 +10,30 @@ export async function submitFinal(
 ) {
   setSubmitting(true);
   try {
-    // Define the file groups with their pre-signed URLs and object URLs
+    // Define the file groups with their pre-signed URLs, object URLs, and raw files
     const uploadGroups = [
       {
         key: "utilityBillFiles" as const,
         files: data.utilityBillFiles || [],
+        preSignedUrls: data.utilityBillFilesPreSigned || [],
         originalFiles: data.utilityBillFilesRaw || [],
       },
       {
         key: "propertyPhotoFiles" as const,
         files: data.propertyPhotoFiles || [],
+        preSignedUrls: data.propertyPhotoFilesPreSigned || [],
         originalFiles: data.propertyPhotoFilesRaw || [],
       },
       {
         key: "electricalPhotoFiles" as const,
         files: data.electricalPhotoFiles || [],
+        preSignedUrls: data.electricalPhotoFilesPreSigned || [],
         originalFiles: data.electricalPhotoFilesRaw || [],
       },
       {
         key: "projectPortfolioFiles" as const,
         files: data.projectPortfolioFiles || [],
+        preSignedUrls: data.projectPortfolioFilesPreSigned || [],
         originalFiles: data.projectPortfolioFilesRaw || [],
       },
     ];
@@ -36,21 +41,21 @@ export async function submitFinal(
     // Object to store the final URLs
     const uploadedUrls: Partial<{ [K in keyof StepData]: string[] }> = {};
 
-    // Upload files to S3 using pre-signed URLs
+    // Upload files to S3 using stored pre-signed URLs
     await Promise.all(
-      uploadGroups.map(async ({ key, files, originalFiles }) => {
-        if (files.length === 0 || originalFiles.length === 0) return;
+      uploadGroups.map(async ({ key, files, preSignedUrls, originalFiles }) => {
+        if (files.length === 0 || originalFiles.length === 0 || preSignedUrls.length === 0) return;
 
-        // Ensure the number of files matches the number of URLs
-        if (files.length !== originalFiles.length) {
-          throw new Error(`Mismatch between URLs and files for ${key}`);
+        // Ensure the number of files, URLs, and pre-signed URLs match
+        if (files.length !== originalFiles.length || files.length !== preSignedUrls.length) {
+          throw new Error(`Mismatch between URLs, pre-signed URLs, and files for ${key}`);
         }
 
         // Upload each file using its corresponding pre-signed URL
         await Promise.all(
           files.map(async (objectUrl, index) => {
             const file = originalFiles[index];
-            const preSignedUrl = (await getPreSignedUrl(file, key))?.signedUrl;
+            const preSignedUrl = preSignedUrls[index];
             if (!preSignedUrl) {
               throw new Error(`No pre-signed URL for ${file.name} in ${key}`);
             }
@@ -104,25 +109,4 @@ export async function submitFinal(
   } finally {
     setSubmitting(false);
   }
-}
-
-// Helper function to get pre-signed URL for a file
-async function getPreSignedUrl(file: File, field: string): Promise<{ signedUrl: string; objectUrl: string }> {
-  const response = await fetch("/api/get-presigned-url", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      fileName: file.name,
-      fileType: file.type,
-      field,
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to get pre-signed URL for ${file.name}`);
-  }
-
-  return response.json();
 }
