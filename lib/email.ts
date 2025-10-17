@@ -10,6 +10,7 @@ interface FormData {
   businessName?: string;
   propertyAddress?: string;
   propertyType?: string;
+
   chargersAvailable?: string;
   covered?: "covered" | "uncovered";
   publicAccess?: "Yes" | "No";
@@ -17,6 +18,7 @@ interface FormData {
   ownOrLease?: string;
   multipleLocations?: "Yes" | "No";
   multipleLocationsCount?: string;
+  propertyPhotoConsent?: boolean;
   businessRevenue?: boolean;
   electricalCapacity?: boolean;
   utilityBillUploaded?: boolean;
@@ -40,6 +42,7 @@ interface TemplateData {
   businessName: string;
   propertyAddress: string;
   propertyType: string;
+  propertyPhotoConsent: string;
   chargersAvailable: string;
   covered: string;
   publicAccess: string;
@@ -91,6 +94,7 @@ export async function sendUserConfirmation(formData: FormData) {
     businessName: formData.businessName || "N/A",
     propertyAddress: formData.propertyAddress || "N/A",
     propertyType: formData.propertyType || "N/A",
+    propertyPhotoConsent: formData.propertyPhotoConsent ? "Yes" : "No",
     chargersAvailable: formData.chargersAvailable || "N/A",
     covered: formData.covered || "N/A",
     publicAccess: formData.publicAccess || "No",
@@ -153,6 +157,7 @@ export async function sendAdminNotification(adminEmail: string, formData: FormDa
     businessName: formData.businessName || "N/A",
     propertyAddress: formData.propertyAddress || "N/A",
     propertyType: formData.propertyType || "N/A",
+    propertyPhotoConsent: formData.propertyPhotoConsent ? "Yes" : "No",
     chargersAvailable: formData.chargersAvailable || "N/A",
     covered: formData.covered || "N/A",
     publicAccess: formData.publicAccess || "No",
