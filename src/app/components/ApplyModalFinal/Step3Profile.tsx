@@ -27,6 +27,7 @@ function Step3Profile({
     try {
       const filesArray = Array.from(files);
       const urls: string[] = [];
+      const preSignedUrls: string[] = [];
       for (const file of filesArray) {
         const response = await fetch("/api/get-presigned-url", {
           method: "POST",
@@ -40,12 +41,14 @@ function Step3Profile({
           }),
         });
         if (!response.ok) throw new Error(`Failed to get pre-signed URL for ${file.name}`);
-        const { objectUrl } = await response.json();
+        const { objectUrl, signedUrl } = await response.json();
         urls.push(objectUrl);
+        preSignedUrls.push(signedUrl);
       }
       update({
         [key]: [...((data[key] as string[]) || []), ...urls],
         [`${key}Raw`]: [...((data[`${key}Raw` as keyof StepData] as File[]) || []), ...filesArray],
+        [`${key}PreSigned`]: [...((data[`${key}PreSigned` as keyof StepData] as string[]) || []), ...preSignedUrls],
       });
     } catch (error) {
       console.error("Error getting pre-signed URLs:", error);
