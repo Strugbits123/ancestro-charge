@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Button from "./Button";
 import { useState } from "react";
-import ApplyModal from "./ApplyModal";
 import { useTranslation } from "react-i18next";
 import ApplyModalFinal from "./ApplyModalFinal";
 

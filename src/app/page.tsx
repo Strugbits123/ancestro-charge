@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import Button from "./components/Button";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import ApplyModal from "./components/ApplyModal";
 import ApplyModalFinal from "./components/ApplyModalFinal";
 
 export default function Home() {
